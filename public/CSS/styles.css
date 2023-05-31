@@ -456,6 +456,19 @@ main.guideMain{
     background-color: rgb(177, 61, 61);
 }
 
+svg{
+    max-width: 50px;
+    fill: white;
+}
+svg.checkMark{
+    transition-duration: 0.1s;
+}
+svg.checkMark:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    transition-duration: 0.1s;
+}
+
 
 /* ---------- Responsiveness media queries -------------- */
 
@@ -508,6 +521,10 @@ main.guideMain{
 
     .updateDocForm{
         width: 300px;
+    }
+
+    svg{
+        max-width: 30px;
     }
 }
 

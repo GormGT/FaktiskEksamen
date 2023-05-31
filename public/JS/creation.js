@@ -10,25 +10,6 @@ const updateDocForm = document.querySelector(".updateDocForm");
 const doccontainer = document.querySelector("#docView");
 
 docForm.addEventListener("submit" , async (e) => { // If using images, make the event listen for a "click" on the form button
-   //  e.preventDefault();
-
-   // When working with images
-
-   //  const formData = new FormData();
-
-   //  //form image value
-   //  formData.append("image", newPokoForm.pokoImg.files[0]);
-
-   //  //form values
-   //  formData.append('name', newPokoForm.pokoName.value);
-   //  formData.append('ability1', newPokoForm.pokoAb1.value);
-   //  formData.append('ability2', newPokoForm.pokoAb2.value);
-   //  formData.append('ability3', newPokoForm.pokoAb3.value);
-   //  formData.append('creator', "");
-   //  formData.append('creatorID', "");
-
-
-   // When working without images
 
    const data = {
       name: docForm.docName.value,
@@ -42,12 +23,6 @@ docForm.addEventListener("submit" , async (e) => { // If using images, make the 
     try{
         const res = await fetch('/documentCreate', {
 
-         // Image version
-            // method: 'POST',
-            // headers: {},
-            // body: formData
-
-         // Normal version
             method: 'POST',
             headers: {
                'Content-Type': 'application/json'
@@ -62,7 +37,7 @@ docForm.addEventListener("submit" , async (e) => { // If using images, make the 
          console.log(result);
          
     }catch(err){
-        console.log(err);
+        console.log(err); //On firefox this function is broken, users cannot create or update tasks
     }
 })
 
@@ -107,6 +82,8 @@ async function loadDocuments (){
     
     const result = await(res.json());
 
+    let resultLength = result.status.foundDocs.length;
+    
     result.status.foundDocs.forEach((doc) => {
 
       // If working with images, add: <img src="data:${doc.image.contentType};base64, ${doc.image.data.toString('base64')}" class="docImg" alt="Bilde av document"> right under the first div tag
@@ -114,6 +91,7 @@ async function loadDocuments (){
         let template = `
         <div class="docContain" id="${doc._id}"> 
                <h1 class="docName">${doc.name}</h1>
+               <svg class="checkMark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
                <div class="docActions">
                   <button class="" onclick="updateDocFetch('${doc._id}')">Update</button>
                   <button class="" onclick="deleteDoc('${doc._id}')">Delete</button>
@@ -121,7 +99,13 @@ async function loadDocuments (){
         </div>
         `;
         doccontainer.innerHTML += template;
+
+        resultLength--;
     })
+
+    if(resultLength == 0){
+      assignChecks();
+    }
     
 }
 
@@ -177,3 +161,17 @@ async function deleteDoc(id){
 }
 
 loadDocuments();
+
+function assignChecks(){
+   let checks = document.querySelectorAll("svg.checkMark");
+   console.log(checks);
+
+   checks.forEach((check) => {
+      check.addEventListener('click', e => {
+         console.log("Check marked");
+
+         // ADD FUNCTIONALITY FOR CHECKMARKS HERE
+
+      })
+   })
+}

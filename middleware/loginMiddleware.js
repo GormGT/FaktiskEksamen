@@ -49,6 +49,7 @@ const checkUser = (req, res, next) => {
 
     if (token){
         jwt.verify(token, "don't look", async (err, decodedToken) => {
+            //TODO: Check if the user specified in the token exists, if false then delete the cookie
             if(err){
                 console.log(err.message);
                 res.locals.user = null;
