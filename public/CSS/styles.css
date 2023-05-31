@@ -130,7 +130,7 @@ p#indexNavTitle{
 
 /* ---------- Task container styles -------------- */
 
-#docview{
+#docView{
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -281,6 +281,7 @@ p#indexNavTitle{
 
     flex-flow: row nowrap;
     width: 800px;
+    margin-bottom: 20px;
 
     /* flex-flow: column nowrap;
     justify-content: center;
@@ -331,12 +332,12 @@ button.cancelUpdate{
     border-radius: 7px;
     color: white;
     padding: 20px;
-    transition-duration: 0.1;
+    transition-duration: 0.1s;
 }
 
 button.cancelUpdate:hover{
     background-color:black;
-    transition-duration: 0.1;
+    transition-duration: 0.1s;
     cursor: pointer;
 }
 
