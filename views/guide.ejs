@@ -1,0 +1,69 @@
+<html lang="no">
+<head>
+    <%- include('partials/header') %>
+
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+    <%- include('partials/nav') %>
+
+    <main class="guideMain">
+        
+        <h1>Veileder</h1>
+        <h2>Her kan du finne informasjon om hvordan gjøre serverrelaterte ting</h2>
+
+        <div id="guideLXUser" class="guideCont">
+            <h1>Legge til adminbrukere i Linux</h1>
+            
+            <p>Før du begynner er det sterkt anbefalt at du bruker Powershell. Det gjør at det blir mye lettere når du skal kopiere inn nøklene i steg 4. For å koble til en Linux-maskin med Powershell kan du skrive inn <span class="terminalText">ssh brukernavn@serverensIP-adresse</span> for å logge på serveren.</p>
+            <img class="guideImg" src="IMG/guideImg/userGuide1.png" alt="ssh pålogging demonstrert i powershell">
+
+            <p>1. Aller først må vi gå til serveren sitt home-directory. Dette kan gjøres ved å skrive <span class="terminalText">sudo su</span>, og så <span class="terminalText">cd /home</span>.</p>
+            <img class="guideImg" src="IMG/guideImg/userGuide2.png" alt="Steg en demonstrert i terminalen">
+
+            <p>2. Når vi er i home-directory kan vi begynne å legge til brukere. I dette eksempelet legger vi til en bruker som heter Monica. Alt du trenger å skrive er <span class="terminalText">adduser monica</span>, og du vil bli veiledet gjennom prosessen med å fylle inn informasjon om brukeren.</p>
+            <img class="guideImg" src="IMG/guideImg/userGuide3.png" alt="Bilde av slik terminalen ser ut når man legger til brukere">
+
+            <p>3. Nå har vi laget en bruker som andre kan logge seg på, men vi kan gjøre prosessen med å logge seg på brukeren mer effektiv ved å legge til en public-key. Det betyr at en bruker som eier en public-key trenger ikke å bruke passord når de logger inn med sin bruker. Naviger inn i mappen til brukeren med <span class="terminalText">cd monica</span> og lag en ny mappe som skal hete .ssh med <span class="terminalText">mkdir .ssh</span>. Gå så inn i mappen med <span class="terminalText">cd .ssh</span>.</p>
+            <img class="guideImg" src="IMG/guideImg/userGuide4.png" alt="Bilde av navigering til .ssh-mappen i terminalen">
+
+            <p>4. Det er i .ssh mappen at vi legger inn en public-key, men for å gjøre det må vi opprette en fil som heter "authorized_keys" til å lagre den. Skriv <span class="terminalText">nano authorized_keys</span> (dobbeltsjekk at du har skrevet det riktig), og du vil nå kunne legge inn en public-key. Kopier keyen som personen du lager brukeren for har sendt deg, og kopier den inn ved å høyreklikke i terminalen. Når det er gjort trykker du ctrl+o og så ctrl+x.</p>
+
+            <p>5. Til slutt skal vi gjøre brukeren til en administrator. Skriv inn <span class="terminalText">usermod -aG sudo monica</span>, og brukeren vil nå ha administratorrettigheter.</p>
+            <img class="guideImg" src="IMG/guideImg/userGuide5.png" alt="Demonstrasjon av steg fem i terminalen">
+        </div>
+
+        <div id="guideNodeApp" class="guideCont">
+            <h1>Hoste en Node-applikasjon på Linux</h1>
+
+            <p>1. Aller først må vi ha et sted å lagre Node-applikasjonen. Kjør <span class="terminalText">sudo su</span> og så <span class="terminalText">cd /</span> for å gå til root-directory. Herfra kjører du <span class="terminalText">cd var</span> for å gå inn i var-mappen.</p>
+            <img class="guideImg" src="IMG/guideImg/webGuide1.png" alt="Navigering til var-mappen demonstrert i terminalen">
+
+            <p>2. Inne i var-mappen må vi opprette en www-mappe, som er der vi skal lagre applikasjonen. Skriv <span class="terminalText">mkdir www</span> og så <span class="terminalText">cd www</span> for å gå inn i den. Opprett så enda en ny mappe inne i www-mappen, som har navnet på applikasjonen du skal hoste. Når det er gjort, må vi gi de riktige tilgangene til mappen, slik at vi faktisk kan få overført Node-applikasjonen til serveren. Skriv inn <span class="terminalText">chown -R rootuser:rootuser /var/www</span> (bytt ut rootuser med brukernavnet til en av serverens admin-brukere).</p>
+            <img class="guideImg" src="IMG/guideImg/webGuide2.png" alt="Opprettelse av www-mappen med riktige tilganger demonstrert i terminalen">
+
+            <p>3. Så må vi få lagt inn filene til Node-applikasjonen i mappen. Dette er det flere måter å gjøre på, men i denne guiden skal vi bruke et program som heter FileZilla. Hvis du ikke har det installert, kan du laste det ned <a href="https://filezilla-project.org/">her</a>. Etter å ha åpnet FileZilla må vi koble til serveren vår. Trykk "koble til" øverst til venstre, og du vil få opp en meny.</p>
+            <img class="guideImg" src="IMG/guideImg/webGuide3.png" alt="Menyen der man legger til nye servere i FileZilla">
+
+            <p>4. I menyen som kommer opp velger vi først "Ny tjener" for å komme i gang. Deretter velger vi SSH-tilkobling, og skriver inn IP-adresse og påloggingsinformasjon for en admin-bruker på serveren. Deretter trykker du "koble til", og hvis alt er gjort riktig vil du etter hvert få opp mappevisningen til serveren til høyre. Naviger fram til mappen du lagde inne i www-mappen.</p>
+            <img class="guideImg" src="IMG/guideImg/webGuide4.png" alt="Mappestrukturen til serveren vist i FileZilla">
+
+            <p>5. Da er det på tide å overføre filene. I fanen til venstre navigerer du fram til filene for Node-applikasjonen på din lokale maskin, og så drar du filene fra mappen over i mappen på serveren. OBS: Ikke dra over node_modules, da det vil ta altfor lang tid og noen ganger overbelaste FileZilla. Når det er gjort kan du installere node_modules på serveren ved å kjøre <span class="terminalText">npm i</span> i terminalen. Hvis du ikke har npm installert på serveren, kan du kjøre <span class="terminalText">apt install npm</span>.</p>
+            <img class="guideImg" src="IMG/guideImg/webGuide5.png" alt="Mappestrukturen og filene til Node-applikasjonen på en klientmaskin, vist i FileZilla">
+            <img class="guideImg" src="IMG/guideImg/webGuide6.png" alt="Installering av Node-moduler i terminalen etter å ha overført filene til Node-applikasjonen til serveren">
+
+            <p>6. Når alt er overført er det på tide å starte opp serveren, og det er så enkelt som å skrive <span class="terminalText">node .</span> i terminalen. Hvis du ikke får noen feilmeldinger burde Node-applikasjonen fungere som den skal, og du kan finne nettsiden ved å søke opp IP-adressen eller domenet (hvis du har det) i nettleseren.</p>
+        </div>
+
+        <div id="guidePlans" class="guideCont">
+            <h1>Oversikt: IP-plan og nettverksdiagram</h1>
+            <h2>Nettverksdiagram</h2>
+            <img src="IMG/NettverksDiagram.png" class="guideImg" alt="Nettverksdiagram for hvordan siden blir hostet" width="700px">
+
+            <h2>IP-plan</h2>
+            <img src="IMG/IP-plan.png" class="guideImg" alt="IP-plan for serverne som brukes til å hoste siden" width="500px">
+        </div>
+
+    </main>
+</body>
+</html>

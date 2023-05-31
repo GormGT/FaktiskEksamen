@@ -1,0 +1,23 @@
+<nav>
+    <a href="/" id="indexNavLogo" class="navLeft navItem">FiksFerdig</a>
+
+    <% if(user) { %>
+      <ul>
+        <li>
+          <a id="indexNavTitle" class="navRight navItem" href="/<%= user.name %>">todo-list - <%= user.name %></a>
+        </li>
+        <li>
+          <a id="indexNavLogout" class="navRight navItem" href="/logout">Log out</a>
+        </li>
+      </ul>
+      <% } else { %>
+        <ul>
+          <li>
+            <p id="indexNavTitle" class="navRight navItem">todo-list</p>
+          </li>
+          <li>
+            <a id="indexNavLogin" class="navRight navItem" href="/sign-in">Log in</a>
+          </li>
+        </ul>
+      <% } %>
+</nav>

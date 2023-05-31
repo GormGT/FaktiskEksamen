@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <%- include('partials/header') %>
+
+    <link rel="stylesheet" href="../CSS/styles.css">
+</head>
+<body>
+    <%- include('partials/nav') %>
+
+    <div class="topHeaderCont">
+        <button class="arrowBtn leftArrow" type="button"> <img class="leftArrowImg" src="IMG/angle-left-solid.svg" alt="Next day"> </button>
+        <h1 class="topHeader">The shit I am going to do today</h1>
+        <button class="arrowBtn rightArrow" type="button"> <img class="rightArrowImg" src="IMG/angle-right-solid.svg" alt="Previous day"> </button>
+    </div>
+
+    <div id="docView">
+    </div>
+
+    <div id="newDocFormContainer">
+        <form id="newDocForm"> <!--If using images, add: method="POST" enctype="multipart/form-data" to the form tag. Also change button type to button-->
+            <label class="hidden" for="docName">Type new shit here</label>
+            <input id="docName" type="text" name="docName" placeholder="Type new shit here...">
+            <button id="submitBtn" type="submit"><img class="symbol" src="IMG/check-solid.svg" alt="Add task"></button>
+        </form>
+    </div>
+
+    <div id="updateDocFormContainer" class="hidden">
+        <form class="updateDocForm" id="">
+            <label class="hidden" for="docUName">Update shit here</label>
+            <input id="docUName" type="text" name="docUName" placeholder="Update existing document...">
+            <button id="submitUBtn" type="submit">Update</button>
+        </form>
+        <button class="cancelUpdate" type="button" onclick="cancelUpdate()">Cancel update</button>
+    </div>
+
+    <script src="../JS/creation.js"></script>
+</body>
+</html>

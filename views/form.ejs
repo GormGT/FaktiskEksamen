@@ -1,0 +1,173 @@
+<html lang="no">
+<head>
+    <%- include('partials/header') %>
+</head>
+<body>
+    <h1>Form :)</h1>
+    <form>
+        <h2>Skriv inn informasjon om et objekt eller noe</h2>
+        <label for="objNavn">Objektnavn:</label>
+        <input id="objNavn" type="text">
+        <div id="navnError"></div>
+        <label for="objType">Objekttype:</label>
+        <input id="objType" type="text">
+        <div id="typeError"></div>
+        <label for="objBesk">Objektbeskrivelse:</label>
+        <input id="objBesk" type="text">
+        <div id="beskError"></div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <form class="read">
+        <h2>Finn et dokument</h2>
+        <label>Dokument ID:</label>
+        <input id="readDoc" type="text">
+    </form>
+
+    <form class="updat">
+        <h2>Oppdater en ting eller noe</h2>
+        <label for="updatDoc">Dokument ID:</label>
+        <input id="updatDoc" type="text">
+        <label for="updNavn">Objektnavn:</label>
+        <input id="updNavn" type="text">
+        <div id="updNaError"></div>
+        <label for="updType">Objekttype:</label>
+        <input id="updType" type="text">
+        <div id="updTyError"></div>
+        <label for="updBesk">Objektbeskrivelse:</label>
+        <input id="updBesk" type="text">
+        <div id="updBeError"></div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <form class="delete">
+        <h2>Slett et dokument >:)</h2>
+        <label>Dokument ID:</label>
+        <input id="deletDoc" type="text">
+    </form>
+
+    <script>
+        // define form
+        const form = document.querySelector('form');
+        const form2 = document.querySelector('form.read');
+        const form3 = document.querySelector('form.updat');
+        const form4 = document.querySelector('form.delete');
+
+        // check for submit and create an object with the data
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const sentObj = {
+                name: form.objNavn.value,
+                type: form.objType.value,
+                desc: form.objBesk.value
+            }
+
+            // send data to function
+            uploadData(sentObj);
+        })
+
+        form2.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            let id = form2.readDoc.value;
+
+            readData(id);
+        })
+
+        form3.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const objToUpdat = {
+                name: form3.updNavn.value,
+                type: form3.updType.value,
+                desc: form3.updBesk.value
+            }
+
+            // send data to function
+            updatData(objToUpdat, form3.updatDoc.value,);
+        })
+
+        form4.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            let id = form4.deletDoc.value;
+
+            deleteData(id);
+        })
+
+        async function uploadData(object){
+
+            // send a POST request to /fetch
+            const res = await fetch('http://localhost/form', {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({
+                // parcel is what to send with the request, in this case the object
+                  parcel: object
+               })
+            });
+            
+            const result = await(res.json());
+        }
+
+        async function readData(id){
+
+            const res = await fetch('http://localhost/thing', {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({
+                  parcel: id
+               })
+            });
+            
+            const result = await(res.json());
+            
+            console.log(result);
+            
+        }
+
+        async function updatData(object, id){
+
+            const res = await fetch('http://localhost/updat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                updatedDoc: object, id
+            })
+            });
+
+            const result = await(res.json());
+
+            console.log(result);
+
+        }
+
+        async function deleteData(id){
+
+            const res = await fetch('http://localhost/delet', {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({
+                  parcel: id
+               })
+            });
+            
+            const result = await(res.json());
+            
+            console.log(result);
+            
+        }
+    </script>
+</body>
+</html>

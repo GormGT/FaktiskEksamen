@@ -1,0 +1,32 @@
+<html lang="no">
+<head>
+    <%- include('partials/header') %>
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+    <%- include('partials/nav') %>
+    <div class="accForm">
+
+        <form id="signupForm" class="accFormCont" onsubmit="event.preventDefault()">
+            <h1>Create account</h1>
+            <label class="hidden" for="signupEmail">Email</label>
+            <input id="signupEmail" type="email" placeholder="Email">
+            <label class="hidden" for="signupName">Username</label>
+            <input id="signupName" type="text" placeholder="Username">
+            <label class="hidden" for="signupPass">Password</label>
+            <input id="signupPass" type="password" placeholder="Password">
+            <label class="hidden" for="signupPass2">Repeat password</label>
+            <input id="signupPass2" type="password" placeholder="Repeat password">
+            <div class="errors hidden">
+                <p class="emailerror"></p>
+                <p class="nameerror"></p>
+                <p class="passerror"></p>
+            </div>
+            <a href="/sign-in">Already have an account?</a>
+            <button type="submit">Create account</button>
+        </form>
+    </div>
+
+    <script src="JS/signup.js"></script>
+</body>
+</html>

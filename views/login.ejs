@@ -1,0 +1,28 @@
+<html lang="no">
+<head>
+    <%- include('partials/header') %>
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+    <%- include('partials/nav') %>
+
+    <div class="accForm">
+        <form id="loginForm" class="accFormCont" onsubmit="event.preventDefault()">
+            <h1>Log in
+            </h1>
+            <label class="hidden" for="loginEmail">Email</label>
+            <input id="loginEmail" type="email" placeholder="Email" alt="Inputfield for Email">
+            <label class="hidden" for="loginPass">Password</label>
+            <input id="loginPass" type="password" placeholder="Password" alt="Inputfield for Password">
+            <div class="errors hidden">
+                <p class="emailerror"></p>
+                <p class="passerror"></p>
+            </div>
+            <a href="/sign-up">No account?</a>
+            <button type="submit">Log in</button>
+        </form>
+    </div>
+
+    <script src="JS/login.js"></script>
+</body>
+</html>

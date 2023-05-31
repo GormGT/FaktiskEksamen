@@ -1,0 +1,606 @@
+body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: rgb(255, 255, 255);
+}
+
+nav{
+    padding: 30px;
+    /* display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        ". . .";
+    text-align: center; */
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: rgb(19, 19, 19);
+    color: white;
+}
+
+/* nav .navLeft{
+    display: flex;
+    align-self: flex-start;
+}
+nav .navRight{
+    display: flex;
+    align-self: flex-end;
+} */
+
+
+nav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: row nowrap;
+    gap: 50px;
+}
+nav a{
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover{
+    text-decoration: underline;
+}
+
+p#indexNavTitle{
+    margin: 0;
+}
+
+
+.topHeaderCont{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    margin: 30px;
+}
+.topHeader{
+    text-align: center;
+    margin: 0;
+}
+
+.arrowBtn{
+    border: none;
+    background: none;
+    transition-duration: 0.1s;
+}
+.arrowBtn img{
+    width: 30px;
+}
+.arrowBtn:hover{
+    cursor: pointer;
+}
+
+.rightArrow:hover .rightArrowImg{
+    transform:translate(5px, 0px);
+    transition-duration: 0.1s;
+}
+.leftArrow:hover .leftArrowImg{
+    transform:translate(-5px, 0px);
+    transition-duration: 0.1s;
+}
+
+.rightArrow:active .rightArrowImg{
+    transform:translate(25px, 0px);
+    transition-duration: 0.1s;
+}
+.leftArrow:active .leftArrowImg{
+    transform:translate(-25px, 0px);
+    transition-duration: 0.1s;
+}
+
+
+.indexMsg{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+
+    text-align: center;
+    margin-top: 100px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.indexMsg h1{
+    font-weight: lighter;
+    margin-bottom: 0;
+}
+.indexMsg h2{
+    font-size: 30px;
+}
+
+.indexMsg a{
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+}
+
+.indexMsg a:hover{
+    text-decoration: underline;
+}
+
+/* ---------- Task container styles -------------- */
+
+#docview{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+/* ---------- Task styles -------------- */
+
+.docContain{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    background-color: rgb(19, 19, 19);
+    /* padding: 20px; */
+    width: 750px;
+
+    border-radius: 7px;
+}
+
+
+/* .docImg{
+    max-width: 250px;
+    max-height: 300px;
+    min-width: 200px;
+    align-self: center;
+    padding: 20px;
+    object-fit: cover;
+} */
+
+.docName{
+    text-align: left;
+
+    flex-grow: 15;
+    color: white;
+    font-size: 20px;
+    font-weight: lighter;
+    margin: 0;
+    padding: 20px;
+}
+
+.docActions{
+    flex-grow: 1;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+.docActions button{
+    height: 100%;
+    background-color: rgb(19, 19, 19);
+    color: white;
+    border: none;
+    border-radius: 7px;
+
+    transition-duration: 0.1s;
+}
+
+.docActions button:hover{
+    background-color: black;
+    transition-duration: 0.1s;
+    cursor: pointer;
+}
+
+/* .mainInfo{
+    padding: 20px;
+    flex-grow: 1;
+} */
+
+/* .docCreator{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: right;
+    margin-top: 30px;
+    margin-bottom: 0px;
+} */
+
+
+/* ---------- Task form styles -------------- */
+
+#newDocFormContainer{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+    
+#newDocForm{
+    display: flex;
+
+    flex-flow: row nowrap;
+    width: 800px;
+
+    /* flex-flow: column nowrap;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    width: 400px;
+    background-color: white;
+    padding: 50px; */
+}
+
+#newDocForm input{
+    padding: 19px;
+
+    flex-grow: 10;
+    background-color: rgb(19, 19, 19);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    font-size: 15px;
+}
+
+#newDocForm button{
+    /* padding: 10px; */
+    align-self: center;
+
+    flex-grow: 1;
+    /* padding: 20px; */
+    color: white;
+    background-color: rgb(19, 19, 19);
+    border: none;
+    border-radius: 7px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    transition-duration: 0.1s;
+}
+
+#newDocForm button:hover{
+    cursor: pointer;
+    background-color: black;
+    transition-duration: 0.1s;
+}
+
+
+#updateDocFormContainer{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+    
+.updateDocForm{
+    display: flex;
+
+    flex-flow: row nowrap;
+    width: 800px;
+
+    /* flex-flow: column nowrap;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    width: 400px;
+    background-color: white;
+    padding: 50px; */
+}
+
+.updateDocForm input{
+    padding: 19px;
+
+    flex-grow: 10;
+    background-color: rgb(19, 19, 19);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    font-size: 15px;
+}
+
+.updateDocForm button{
+    /* width: 200px; */
+    padding: 10px;
+    align-self: center;
+
+    flex-grow: 1;
+    padding: 20px;
+    color: white;
+    background-color: rgb(19, 19, 19);
+    border: none;
+    border-radius: 7px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    transition-duration: 0.1s;
+}
+.updateDocForm button:hover{
+    cursor: pointer;
+    background-color: black;
+    transition-duration: 0.1s;
+}
+
+button.cancelUpdate{
+    background-color: rgb(19, 19, 19);
+    border: none;
+    border-radius: 7px;
+    color: white;
+    padding: 20px;
+    transition-duration: 0.1;
+}
+
+button.cancelUpdate:hover{
+    background-color:black;
+    transition-duration: 0.1;
+    cursor: pointer;
+}
+
+/* ---------- Login form styles -------------- */
+
+.accForm{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.accFormCont{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    /* text-align: center; */
+    background-color: white;
+    gap: 10px;
+    width: 300px;
+    padding: 50px;
+}
+
+.accFormCont input{
+    padding: 7px;
+    border-radius: 5px;
+    border: solid;
+}
+
+.accFormCont button{
+    width: 200px;
+    padding: 10px;
+    align-self: flex-end;
+    background-color: white;
+    border-radius: 5px;
+    border: solid;
+    font-size: 15px;
+    cursor: pointer;
+    transition-duration: 0.1s;
+}
+
+.accFormCont a{
+    color: black;
+    text-decoration: none;
+}
+
+
+.accFormCont button:hover{
+    background-color: rgb(139, 139, 139);
+    transition-duration: 0.1s;
+    transform: scale(1.1);
+
+}
+.accFormCont a:hover{
+    text-decoration: underline;
+}
+
+
+.accFormCont button:active{
+    background-color: rgb(92, 92, 92);
+    transition-duration: 0.1s;
+    transform: scale(1.0);
+
+}
+
+
+
+
+/* ---------- Guide styles -------------- */
+
+main.guideMain{
+    margin: 100px;
+    margin-top: 50px;
+    margin-right: 400px;
+}
+
+.guideCont{
+    margin-top: 50px;
+}
+.guideCont p{
+    margin-bottom: 20px;
+    line-height: 30px;
+}
+
+
+.guideImg{
+    margin-bottom: 100px;
+    margin-left: 50px;
+    border: solid;
+    border-width: 2px;
+    border-radius: 7px;
+}
+
+.terminalText{
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 5px;
+}
+
+
+
+/* ---------- Extra styles -------------- */
+
+.symbol{
+    text-align: right;
+    filter:invert(100%);
+    width: 50px;
+}
+
+.hidden{
+    display: none !important;
+}
+
+.errors{
+    background-color: rgb(177, 61, 61);
+}
+
+
+/* ---------- Responsiveness media queries -------------- */
+
+@media screen and (max-width: 818px){
+    .topHeader{
+        font-size: 25px;
+    }
+
+    .arrowBtn img{
+        width: 20px;
+    }
+    
+    .docContain{
+        width: 500px;
+    }
+
+    #newDocForm{
+        width: 500px;
+    }
+
+    .updateDocForm{
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 532px){
+    .topHeader{
+        font-size: 20px;
+    }
+
+    .arrowBtn img{
+        width: 15px;
+    }
+
+    nav{
+        font-size: 10px;
+        padding: 20px;
+    }
+    nav ul{
+        gap: 20px;
+    }
+    
+    .docContain{
+        width: 300px;
+    }
+
+    #newDocForm{
+        width: 300px;
+    }
+
+    .updateDocForm{
+        width: 300px;
+    }
+}
+
+
+/* ---------- Media queries for guide -------------- */
+
+
+
+@media screen and (max-width: 1300px) {
+    
+    main.guideMain{
+        margin: 100px;
+        margin-top: 50px;
+        margin-right: 200px;
+    }
+    
+    .guideImg{
+        max-width: 700px;
+    }
+}
+
+@media screen and (max-width: 1040px) {
+    
+    main.guideMain{
+        margin: 100px;
+        margin-top: 50px;
+        margin-right: 200px;
+    }
+    
+    .guideImg{
+        width: 90%;
+        margin-left: 0;
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    
+    main.guideMain{
+        margin: 80px;
+        margin-top: 25px;
+    }
+    
+    /* .guideImg{
+        max-width: 450px;
+    } */
+}
+
+@media screen and (max-width: 700px) {
+    
+    /* .guideImg{
+        max-width: 350px;
+    } */
+
+    .guideCont p{
+        margin-bottom: 15px;
+        line-height: 25px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    
+    main.guideMain{
+        margin: 50px;
+        margin-top: 25px;
+    }
+
+    /* .guideImg{
+        max-width: 250px;
+    } */
+
+    .guideCont p{
+        margin-bottom: 15px;
+        line-height: 25px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    main.guideMain{
+        margin: 0;
+        margin-top: 25px;
+    }
+
+    .guideCont p, .guideCont h1, .guideCont h2{
+        margin: 10px 20px;
+    }
+
+    .guideImg{
+        width: 100%;
+        margin-bottom: 40px;
+        border-radius: 0px;
+    }
+
+}

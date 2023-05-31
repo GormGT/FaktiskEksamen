@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <%- include('partials/header') %>
+
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+    <%- include('partials/nav') %>
+
+
+    <div class="indexMsg">
+        <h1>The ultimate to-do-list app</h1>
+        <h2>Get shit done today!</h2>
+        <% if(user) { %>
+            <a href="/<%= user.name %>">View your to-do lists</a>
+        <% } else { %>
+            <a href="/sign-in">Login to start using the app</a>
+        <% } %>
+    </div>
+
+
+    <!-- <div id="docView">
+
+    </div> -->
+
+    <!-- <script src="JS/indexLoad.js"></script> -->
+</body>
+</html>
