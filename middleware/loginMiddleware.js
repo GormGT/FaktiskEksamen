@@ -12,7 +12,6 @@ const requireAuth = (req, res, next) => {
                 console.log(err.message);
                 res.redirect('/sign-in'); 
             }else{
-                console.log(decodedToken);
                 next();
             }
         })
@@ -32,7 +31,7 @@ const requireMaxAuth = (req, res, next) => {
                 res.redirect('/sign-in'); 
             }else{
                 if(decodedToken.userType !== "Admin"){
-                    console.log("Invalid access", decodedToken.userType);
+                    console.log("Invalid access attempt,", decodedToken.userType);
                     res.redirect('/');
                 }else{
                     next();

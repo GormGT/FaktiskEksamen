@@ -69,7 +69,6 @@ module.exports.userView_get = (req, res) => {
         }else{
             user = await User.findById(decodedToken.id);//find user in database
         }}).then(() => {
-            console.log(req.params.username);
             if(req.params.username == user.name){
                 res.render("creation", {title: "My page"})
             }else{
@@ -129,6 +128,7 @@ module.exports.login_post = async (req, res) => {
         const user = await User.login(email, password); //run the login function from Object.js
         const token = createToken(user._id, user.type);
         res.cookie('jwt', token, {httpOnly: true, maxAge: maxAge * 1000});//create a cookie containing a json web token
+        console.log("User login", email);
         res.status(200).json({ user });
     }
     catch (err){
@@ -144,6 +144,7 @@ module.exports.signup_post = async (req, res) => { //fire upon recieving a post 
         const user = await User.create({ name, mail, password }); //create a new user which will be submitted to the database
         const token = createToken(user._id, user.type);
         res.cookie('jwt', token, {httpOnly: true, maxAge: maxAge * 1000});//create a cookie containing a json web token
+        console.log("New user signup", name);
         res.status(201).json({user});
     }
     catch (err){
@@ -155,6 +156,7 @@ module.exports.signup_post = async (req, res) => { //fire upon recieving a post 
 
 module.exports.logout_get = (req, res) => {
     res.cookie('jwt', '', { maxAge: 1 });
+    console.log('User logout');
     res.redirect('/');
 }
 
