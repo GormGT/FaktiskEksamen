@@ -43,7 +43,7 @@ router.post("/docUpdateFetch", controller.doc_update_fetch);
 
 router.post("/docUpdate", controller.doc_update);
 
-router.post("/docDelete", controller.doc_delete);
+router.post("/docDelete", requireAuth, controller.doc_delete);
 
 // legacy form routes
 router.get("/form", requireAuth, controller.form_get);

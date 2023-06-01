@@ -369,18 +369,18 @@ module.exports.doc_update = async (req, res) => {
 module.exports.doc_delete = async (req, res) => {
     console.log(req.body);
 
-    try{
-        const docToDelete = await Task.findOneAndDelete({_id: req.body.id});
-        res.status(200).send({
-            status: `Task sent to the shadow realm >:) ${req.body}`
-        })
-    }
-    catch(err){
-        console.error(err);
-        res.status(400).send({
-            status: `Error deleting Task ${err}`
-        })
-    }
+        try{
+            const docToDelete = await Task.findOneAndDelete({_id: req.body.id});
+            res.status(200).send({
+                status: `Task sent to the shadow realm >:) ${req.body}`
+            })
+        }
+        catch(err){
+            console.error(err);
+            res.status(400).send({
+                status: `Error deleting Task ${err}`
+            })
+        }
 
 }
 
