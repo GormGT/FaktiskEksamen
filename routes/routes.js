@@ -12,7 +12,7 @@ router.get("/", controller.home_get);
 
 // router.get("/home/:username", requireAuth, controller.userHome_get);
 
-router.get("/guide", requireMaxAuth, controller.guide_get);
+router.get("/veiledning", requireMaxAuth, controller.guide_get);
 
 
 // auth routes

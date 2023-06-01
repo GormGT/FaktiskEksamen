@@ -11,7 +11,16 @@
     <main class="guideMain">
         
         <h1>Veileder</h1>
-        <h2>Her kan du finne informasjon om hvordan gjøre serverrelaterte ting</h2>
+        <h2>Her kan du finne informasjon om mye forskjellig</h2>
+
+        <div id="guideNav">
+            <p>Navigering:</p>
+            <a href="#guideLXUser">Opprette ny bruker i linux</a>
+            <a href="#guideNodeApp">Hoste en Node-applikasjon på en Ubuntu server</a>
+            <a href="#guideSecurity">Sikkerhet og trusler</a>
+            <a href="#guideAuth">Hvorfor autentisering?</a>
+            <a href="#guidePlans">Planer og diagrammer</a>
+        </div>
 
         <div id="guideLXUser" class="guideCont">
             <h1>Legge til adminbrukere i Linux</h1>
@@ -56,6 +65,25 @@
             <p>6. Når alt er overført er det på tide å starte opp serveren, og det er så enkelt som å skrive <span class="terminalText">node .</span> i terminalen. Hvis du ikke får noen feilmeldinger burde Node-applikasjonen fungere som den skal, og du kan finne nettsiden ved å søke opp IP-adressen eller domenet (hvis du har det) i nettleseren.</p>
         </div>
 
+        <div id="guideSecurity" class="guideCont">
+            <h1>Sikkerhet og trusler</h1>
+
+            <h2>Typiske trusler for en server:</h2>
+            <ul>
+                <li><p>Ddos Attack:<br>Overbelastning av serveren forårsaket av store menger trafikk, for eksempel for mange forespørsler til en database eller for mange brukere aktive på en gang.</p></li>
+                <li><p>Brute Force Attack:<br>Forsøk på å komme inn på en server eller konto ved å prøve å gjette passordet til en bruker, ofte gjort med en maskin. Dårlige passord er spesielt lette å gjette.</p></li>
+                <li><p>Malware:<br>Skadevare som kan komme seg inn på serveren på flere måter, både gjennom uforsiktige brukere eller dårlig oppsatt brannmur.</p></li>
+                <li><p>SQL-injection:<br>Misbruk av input-felter eller andre steder der brukeren skriver inn informasjon, som lar andre kjøre kommandoer i databasen uten tilgang.</p></li>
+            </ul>
+            <p>Dette er bare noen av de mange truslene en webserver står ovenfor, og derfor er det viktig at man tar serverens sikkerhet på alvor. Det aller første man bør gjøre er å sette opp brannmuren slik at ingen uønsket trafikk kommer inn på serveren, og gi brukerne på serveren sterke passord (dette er spesielt viktig for admins). Her kan man også implementere nøkkelpålogging slik at man kan skru av passordpålogging, og dermed sikre seg selv fra Brute force attacks. For å forhindre Ddos-attacks kan man sette opp systemer som begrenser hvor ofte en bruker kan sende inn ting til databasen slik at den ikke overbelastes, og for SQL-injections må man sette opp input-felter slik at man ikke kan skrive inn kommandoer som gjør ting i databasen.</p>
+        </div>
+
+        <div id="guideAuth" class="guideCont">
+            <h1>Hvorfor autentisering?</h1>
+
+            <p>Autentisering er viktig fordi det gjør at ikke alle på en server eller nettsted har tilgang til alt mulig, men isteden så har hver bruker tilgang til kun det de skal ha tilgang til. På denne nettsiden brukes autentisering til å forsikre at kun innloggede bruker har tilgang til sine todo-lister, og hindre at brukere kan endre på lister eid av andre brukere. Det brukes også til å skille mellom vanlig bruker og admin, og hadde du ikke vært en admin-bruker ville du ikke kunnet lese dette. Autentisering gjør hele siden mye sikrere.</p>
+        </div>
+
         <div id="guidePlans" class="guideCont">
             <h1>Oversikt: IP-plan og nettverksdiagram</h1>
             <h2>Nettverksdiagram</h2>
@@ -63,6 +91,9 @@
 
             <h2>IP-plan</h2>
             <img src="IMG/IP-plan.png" class="guideImg" alt="IP-plan for serverne som brukes til å hoste siden" width="500px">
+
+            <h2>ER-diagram</h2>
+            <img src="IMG/ER-diagram.png" class="guideImg" alt="ER-diagram for nettsidens database" width="500px">
         </div>
 
     </main>

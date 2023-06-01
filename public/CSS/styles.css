@@ -469,6 +469,13 @@ svg.checkMark:hover{
     transition-duration: 0.1s;
 }
 
+#guideNav{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
 
 /* ---------- Responsiveness media queries -------------- */
 
